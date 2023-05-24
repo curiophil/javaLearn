@@ -3,8 +3,8 @@ spring:
     # 数据库配置文件
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: (hq!23456
-    url: jdbc:mysql://120.48.78.208:3306/java_learn?useSSL=false
+    password: 123456
+    url: 123456
 
 # mybatis打印日志
 mybatis-plus:
