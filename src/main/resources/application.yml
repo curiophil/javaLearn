@@ -3,10 +3,11 @@ spring:
     # 数据库配置文件
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 12346
-    url: 123465
+    password: (hq!23456
+    url: jdbc:mysql://120.48.78.208:3306/java_learn?useSSL=false
 
 # mybatis打印日志
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com/curiophil/javalearn/mapper/xml/*.xml
