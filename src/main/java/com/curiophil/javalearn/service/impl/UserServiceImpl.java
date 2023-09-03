@@ -1,11 +1,9 @@
 package com.curiophil.javalearn.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.curiophil.javalearn.mapper.mysql.UserMapper;
 import com.curiophil.javalearn.pojo.User;
 import com.curiophil.javalearn.service.UserService;
-import org.apache.flink.api.java.tuple.Tuple2;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class UserServiceImpl implements UserService {
