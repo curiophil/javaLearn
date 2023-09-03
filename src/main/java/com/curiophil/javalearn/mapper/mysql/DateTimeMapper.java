@@ -1,4 +1,4 @@
-package com.curiophil.javalearn.mapper;
+package com.curiophil.javalearn.mapper.mysql;
 
 
 import java.util.List;

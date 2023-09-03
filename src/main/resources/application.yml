@@ -1,13 +1,39 @@
 spring:
   datasource:
     # 数据库配置文件
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: 123456
-    url: 123456
+    mysql:
+      name: mysql
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: root
+      jdbc-url: jdbc:mysql://localhost:3306/java_learn?useSSL=false
+    presto:
+      name: presto
+      driver-class-name: com.facebook.presto.jdbc.PrestoDriver
+      username: default
+      jdbc-url: jdbc:presto://hadoop112:9000/mysqldb/
+    es:
+      name: es
+      driver-class-name: org.elasticsearch.xpack.sql.jdbc.EsDriver
+      username:
+#      jdbc-url: jdbc:es://http://10.253.171.120:9200/
+      jdbc-url: jdbc:es://10.253.171.224:30269/api/elasticsearch
 
 # mybatis打印日志
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath:com/curiophil/javalearn/mapper/xml/*.xml
+  mapper-locations1: classpath:com/curiophil/javalearn/mapper/mysql/xml/*.xml
+  mapper-locations2: classpath:com/curiophil/javalearn/mapper/presto/xml/*.xml
+  mapper-locations3: classpath:com/curiophil/javalearn/mapper/es/xml/*.xml
+
+rocketmq:
+  name-server: hadoop102:9876
+  producer:
+    group: default
+    send-message-timeout: 300000
+
+# 控制台打印sql
+logging:
+  level:
+    com.curiophil.javalearn.mapper: debug

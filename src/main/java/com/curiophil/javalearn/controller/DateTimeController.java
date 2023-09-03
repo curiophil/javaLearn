@@ -1,8 +1,6 @@
 package com.curiophil.javalearn.controller;
 
-import com.curiophil.javalearn.pojo.User;
 import com.curiophil.javalearn.service.DateTimeService;
-import com.curiophil.javalearn.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +17,10 @@ public class DateTimeController {
     @RequestMapping("/getTimeSlots")
     public List<String> getUserList() {
         return dateTimeService.getTimeSlots();
+    }
+
+    @RequestMapping("/sendMessage")
+    public void sendMessage() {
+        dateTimeService.sendMessage();
     }
 }

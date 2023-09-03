@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.curiophil.javalearn.mapper.mysql.MyBaseMapper">
+
+
+    <select id="test" resultType="boolean">
+        select (15, 'xxx', 18, 'xxx') in
+        <foreach collection="list" item="o" separator="," open="(" close=")">(#{o.id}, #{o.name}, #{o.age}, #{o.email})</foreach>
+<!--
+       select 'abc' in <foreach collection="list" item="o" separator="," open="(" close=")">#{o}</foreach>
+-->
+
+    </select>
+</mapper>

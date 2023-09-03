@@ -43,12 +43,82 @@
             <version>5.1.47</version>
         </dependency>
 
+        <!--add dependency in pom.xml-->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.facebook.presto</groupId>
+            <artifactId>presto-jdbc</artifactId>
+            <version>0.282</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>co.elastic.clients</groupId>
+            <artifactId>elasticsearch-java</artifactId>
+            <version>8.9.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.json</groupId>
+                    <artifactId>jakarta.json-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.3</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-high-level-client -->
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>7.17.9</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>jakarta.json</groupId>
+            <artifactId>jakarta.json-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.elasticsearch.plugin</groupId>
+            <artifactId>x-pack-sql-jdbc</artifactId>
+            <version>7.12.1</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+
+    <repositories>
+        <repository>
+            <id>elastic.co</id>
+            <url>https://artifacts.elastic.co/maven</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
