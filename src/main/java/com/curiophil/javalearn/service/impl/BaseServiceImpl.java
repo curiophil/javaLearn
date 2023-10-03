@@ -20,8 +20,8 @@ public class BaseServiceImpl implements BaseService {
     @Override
     public Boolean test() {
         ArrayList<User> list = new ArrayList<User>() {{
-            add(User.builder().id(15).name("xxx").age(18).email("xxx").build());
-            add(User.builder().id(18).name("bbb").age(32).email("bbb").build());
+            add(User.builder().id(15l).name("xxx").age(18).email("xxx").build());
+            add(User.builder().id(18l).name("bbb").age(32).email("bbb").build());
         }};
 
 //        ArrayList<String> list = new ArrayList<String>() {{

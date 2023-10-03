@@ -1,12 +1,15 @@
 spring:
+  jackson:
+    time-zone: GMT+8
   datasource:
     # 数据库配置文件
     mysql:
       name: mysql
+      # mysql8 datetime对应LocalDateTime mysql5~ datetime对应timestamp
       driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: root
-      jdbc-url: jdbc:mysql://localhost:3306/java_learn?useSSL=false
+      jdbc-url: jdbc:mysql://centos101:3306/java_learn?useSSL=false
     presto:
       name: presto
       driver-class-name: com.facebook.presto.jdbc.PrestoDriver
