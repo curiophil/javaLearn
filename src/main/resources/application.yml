@@ -9,7 +9,7 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: root
-      jdbc-url: jdbc:mysql://centos101:3306/java_learn?useSSL=false
+      jdbc-url: jdbc:mysql://localhost:3306/java_learn?useSSL=false
     presto:
       name: presto
       driver-class-name: com.facebook.presto.jdbc.PrestoDriver
@@ -19,8 +19,7 @@ spring:
       name: es
       driver-class-name: org.elasticsearch.xpack.sql.jdbc.EsDriver
       username:
-#      jdbc-url: jdbc:es://http://10.253.171.120:9200/
-      jdbc-url: jdbc:es://10.253.171.224:30269/api/elasticsearch
+      jdbc-url: jdbc:es://*:*/api/elasticsearch
 
 # mybatis打印日志
 mybatis-plus:

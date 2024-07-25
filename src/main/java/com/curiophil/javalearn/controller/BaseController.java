@@ -1,5 +1,6 @@
 package com.curiophil.javalearn.controller;
 
+import com.curiophil.javalearn.consistcy.NetworkApi;
 import com.curiophil.javalearn.service.BaseService;
 import com.curiophil.javalearn.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +22,14 @@ public class BaseController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private NetworkApi networkApi;
+
 
     @GetMapping("test")
     public Object test() {
-//        return baseService.test();
-        return userService.testIn();
+        networkApi.execute(1, "");
+        networkApi.execute2();
+        return networkApi.execute(1, "");
     }
 }
