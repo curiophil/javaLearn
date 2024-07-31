@@ -15,7 +15,7 @@ public class KafkaCousumeUtil {
 
     static {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "10.253.76.39:9092,10.253.91.4:9092,10.253.81.102:9092");
+        props.put("bootstrap.servers", "*:9092");
         props.put("sasl.jaas.config", "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"admin\" password=\"!1Sd&Ao1#\";");
         props.put("sasl.mechanism", "SCRAM-SHA-512");
         props.put("security.protocol", "SASL_PLAINTEXT");

@@ -1,7 +1,6 @@
 package com.curiophil.javalearn.util;
 
 import com.facebook.presto.jdbc.PrestoConnection;
-import com.facebook.presto.jdbc.PrestoPreparedStatement;
 import com.facebook.presto.jdbc.PrestoStatement;
 import com.facebook.presto.jdbc.QueryStats;
 import com.google.common.cache.Cache;
@@ -11,10 +10,8 @@ import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 public class PrestoJdbcUtil {
@@ -36,7 +33,7 @@ public class PrestoJdbcUtil {
     private static DataSource getDataSource() {
         HikariDataSource hikariDataSource = new HikariDataSource();
         hikariDataSource.setDriverClassName("com.facebook.presto.jdbc.PrestoDriver");
-        hikariDataSource.setJdbcUrl("jdbc:presto://10.253.76.39:9000/es/default");
+        hikariDataSource.setJdbcUrl("jdbc:presto://*:9000/es/default");
         hikariDataSource.setUsername("1");
         hikariDataSource.setConnectionTimeout(30000);
         return hikariDataSource;
@@ -80,7 +77,6 @@ public class PrestoJdbcUtil {
 
         try {
             connection = PrestoJdbcUtil.getConnection().unwrap(PrestoConnection.class);
-//            Connection connection = DriverManager.getConnection("jdbc:presto://10.253.76.39:9000/es/default", "test", null);
             connection.setCatalog("es");
             connection.setSchema("default");
             statement = connection.createStatement().unwrap(PrestoStatement.class);

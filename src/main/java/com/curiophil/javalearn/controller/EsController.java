@@ -8,7 +8,6 @@ import co.elastic.clients.elasticsearch.core.BulkRequest;
 import co.elastic.clients.elasticsearch.core.BulkResponse;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.bulk.BulkResponseItem;
-import co.elastic.clients.elasticsearch.sql.QueryResponse;
 import co.elastic.clients.json.jackson.JacksonJsonpMapper;
 import co.elastic.clients.transport.ElasticsearchTransport;
 import co.elastic.clients.transport.rest_client.RestClientTransport;
@@ -32,8 +31,7 @@ import shadow.org.elasticsearch.common.collect.List;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.sql.*;
-import java.util.Map;
+import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 @RestController
@@ -102,7 +100,7 @@ public class EsController {
     }
 
     public static void main(String[] args) throws SQLException, IOException, InterruptedException {
-//        String address = "jdbc:es://" + "http://10.253.171.224:30269/api/elasticsearch";
+//        String address = "jdbc:es://" + "http://*:30269/api/elasticsearch";
         RestClientBuilder.HttpClientConfigCallback httpClientConfigCallback = httpClientBuilder ->
                 httpClientBuilder
                         // this request & response header manipulation helps get around newer (>=7.16) versions
