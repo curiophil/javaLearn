@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <property name="logFilePath" value="./logs"/>
+    <property name="logFileName" value="java-learn.log"/>
+    <property name="operationLogFileName" value="java-learn-operation.log"/>
+    <springProperty scope="context" name="history" source="logging.history"/>
+    <springProperty scope="context" name="fileSize" source="logging.fileSize" defaultValue="100MB"/>
+    <springProperty scope="context" name="cleanHistoryOnStart" source="logging.cleanHistoryOnStart" defaultValue="false"/>
+    <springProperty scope="context" name="pattern" source="logging.pattern"
+                    defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{requestId}] [%thread] %-5level - %msg%n"/>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logFilePath}/${logFileName}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logFilePath}/${logFileName}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <MaxFileSize>${fileSize}</MaxFileSize>
+            <MaxHistory>${history}</MaxHistory>
+            <cleanHistoryOnStart>${cleanHistoryOnStart}</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${pattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="OperationLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logFilePath}/${operationLogFileName}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logFilePath}/${operationLogFileName}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <MaxFileSize>${fileSize}</MaxFileSize>
+            <MaxHistory>${history}</MaxHistory>
+            <cleanHistoryOnStart>${cleanHistoryOnStart}</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${pattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.curiophil.javalearn.aop.OperationInterceptor" level="debug" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="RollingFile"/>
+        <appender-ref ref="OperationLogFile"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="RollingFile"/>
+    </root>
+</configuration>
