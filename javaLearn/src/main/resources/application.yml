@@ -15,11 +15,12 @@ spring:
       driver-class-name: com.facebook.presto.jdbc.PrestoDriver
       username: default
       jdbc-url: jdbc:presto://hadoop112:9000/mysqldb/
-    es:
-      name: es
-      driver-class-name: org.elasticsearch.xpack.sql.jdbc.EsDriver
-      username:
-      jdbc-url: jdbc:es://*:*/api/elasticsearch
+    clickhouse:
+      name: clickhouse
+      driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+      username: admin
+      password: qwer1234@Q
+      jdbc-url: jdbc:clickhouse://xxx/collector?use_server_time_zone=true&time_zone=Asia/Shanghai
 
 # mybatis打印日志
 mybatis-plus:
@@ -27,7 +28,7 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations1: classpath:com/curiophil/javalearn/mapper/mysql/xml/*.xml
   mapper-locations2: classpath:com/curiophil/javalearn/mapper/presto/xml/*.xml
-  mapper-locations3: classpath:com/curiophil/javalearn/mapper/es/xml/*.xml
+  mapper-locations-clickhouse: classpath:com/curiophil/javalearn/mapper/clickhouse/xml/*.xml
 
 rocketmq:
   name-server: hadoop102:9876

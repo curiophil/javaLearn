@@ -10,36 +10,30 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(value = "com.curiophil.javalearn.mapper.es", sqlSessionFactoryRef = "esSessionFactory")
-public class EsDataSourceConfiguration {
+@MapperScan(value = "com.curiophil.javalearn.mapper.clickhouse", sqlSessionFactoryRef = "clickHouseSessionFactory")
+public class ClickHouseDataSourceConfiguration {
 
-    @Value("${mybatis-plus.mapper-locations3}")
-    private String esXmlLocation;
+    @Value("${mybatis-plus.mapper-locations-clickhouse}")
+    private String clickHouseXmlLocation;
 
-
-    @Bean("esDataSource")
-    @ConfigurationProperties(prefix="spring.datasource.es")
-    public DataSource esDataSource() {
+    @Bean("clickHouseDataSource")
+    @ConfigurationProperties(prefix="spring.datasource.clickhouse")
+    public DataSource prestoDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean("esSessionFactory")
-    public SqlSessionFactory esSessionFactory(@Qualifier("esDataSource") DataSource dataSource) throws Exception {
+    @Bean("clickHouseSessionFactory")
+    public SqlSessionFactory prestoSessionFactory(@Qualifier("clickHouseDataSource") DataSource dataSource) throws Exception {
         MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-//        bean.setMapperLocations(
-//                new PathMatchingResourcePatternResolver().getResources(esXmlLocation));
+        bean.setMapperLocations(
+                new PathMatchingResourcePatternResolver().getResources(clickHouseXmlLocation));
         return bean.getObject();// 设置mybatis的xml所在位置
     }
 
-
-    @Bean("esTemplate")
-    public JdbcTemplate esJdbcTemplate(@Qualifier("esDataSource") DataSource dataSource) {
-        return new JdbcTemplate(dataSource);
-    }
 }

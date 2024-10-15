@@ -6,7 +6,11 @@ import java.util.Map;
 
 public abstract class JavaLearnThread extends Thread {
 
-    private static final Map<String, String> copyOfContextMap = MDC.getCopyOfContextMap();;
+    private Map<String, String> copyOfContextMap;
+
+    public JavaLearnThread() {
+        this.copyOfContextMap = MDC.getCopyOfContextMap();
+    }
 
     @Override
     public void run() {
@@ -14,7 +18,5 @@ public abstract class JavaLearnThread extends Thread {
         run0();
     }
 
-    public void run0() {
-
-    }
+    public abstract void run0();
 }
